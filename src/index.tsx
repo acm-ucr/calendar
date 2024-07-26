@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import Days from "./Days";
-import Toolbar from "./Toolbar";
-import Headers from "./Headers";
+import Days from "./days";
+import Toolbar from "./toolbar";
+import Headers from "./headers";
+import "../index.css";
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
@@ -11,11 +12,11 @@ const Calendar = () => {
   const month = date.getMonth();
   const day = date.getDate();
 
-  const onMonthChange = (value) => {
+  const onMonthChange = (value: number) => {
     setDate(new Date(year, month + value, day));
   };
 
-  const onYearChange = (value) => {
+  const onYearChange = (value: number) => {
     setDate(new Date(year + value, month, day));
   };
 

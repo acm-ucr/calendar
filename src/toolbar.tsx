@@ -5,7 +5,13 @@ import {
   ChevronsLeft,
 } from "lucide-react";
 
-const Toolbar = ({ date, onMonthChange, onYearChange }) => {
+type props = {
+  date: Date;
+  onMonthChange: (value: number) => void;
+  onYearChange: (value: number) => void;
+};
+
+const Toolbar = ({ date, onMonthChange, onYearChange }: props) => {
   return (
     <div className="flex gap-4 justify-center">
       <ChevronsLeft className="text-3xl" onClick={() => onYearChange(-1)} />

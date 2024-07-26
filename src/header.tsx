@@ -1,4 +1,8 @@
-const Header = ({ day }) => {
+type props = {
+  day: string;
+};
+
+const Header = ({ day }: props) => {
   return <th className="text-center border">{day}</th>;
 };
 

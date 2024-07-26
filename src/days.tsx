@@ -1,6 +1,13 @@
-import Day from "./Day";
+import { event, cards } from "../types";
+import Day from "./day";
 
-const Days = ({ year, month, events }) => {
+type props = {
+  year: number;
+  month: number;
+  events: event[];
+};
+
+const Days = ({ year, month, events }: props) => {
   const first = new Date(year, month, 1).getDay();
   const last = new Date(year, month + 1, 0).getDate();
 
@@ -22,7 +29,7 @@ const Days = ({ year, month, events }) => {
     }),
   }));
 
-  const prefix = Array.from({ length: first }, (_, i) => ({
+  const prefix: cards[] = Array.from({ length: first }, (_, i) => ({
     day: lastPrevious - first + i + 1,
     current: false,
     today: false,
@@ -31,14 +38,17 @@ const Days = ({ year, month, events }) => {
 
   const FL = first + last;
 
-  const suffix = Array.from({ length: FL - (FL % 7) + 7 - FL }, (_, i) => ({
-    day: i + 1,
-    current: false,
-    today: false,
-    events: [],
-  }));
+  const suffix: cards[] = Array.from(
+    { length: FL - (FL % 7) + 7 - FL },
+    (_, i) => ({
+      day: i + 1,
+      current: false,
+      today: false,
+      events: [],
+    })
+  );
 
-  const cards = prefix.concat(days, suffix);
+  const cards: cards[] = prefix.concat(days, suffix);
 
   return (
     <tbody className="flex flex-col h-full">

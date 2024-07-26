@@ -1,6 +1,14 @@
-import Event from "./Event";
+import Event from "./event";
+import { event } from "../types";
 
-const Day = ({ day, current, today, events }) => {
+type props = {
+  day: number;
+  current: boolean;
+  today: boolean;
+  events: event[];
+};
+
+const Day = ({ day, current, today, events }: props) => {
   return (
     <td
       className={`${current ? "text-white" : "text-gray-400"} ${
