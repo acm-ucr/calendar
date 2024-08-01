@@ -1,8 +1,20 @@
 "use client";
+import { HTMLAttributes, FC } from "react";
 import "../index.css";
 import { twMerge } from "tailwind-merge";
+import {
+  CalendarEventProps,
+  CalendarDayProps,
+  CalendarWeekProps,
+  CalendarDaysProps,
+  CalendarHeaderProps,
+  CalendarButtonProps,
+} from "../types/index";
 
-const CalendarToolbar = ({ className, ...props }: any) => {
+const CalendarToolbar: FC<HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}) => {
   return (
     <div
       className={twMerge("flex items-center justify-center gap-4", className)}
@@ -11,29 +23,42 @@ const CalendarToolbar = ({ className, ...props }: any) => {
   );
 };
 
-const CalendarYearPrev = ({ onClick, ...props }: any) => {
+const CalendarYearPrev: FC<CalendarButtonProps> = ({
+  onClick,
+  ...props
+}) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarYearNext = ({ onClick, ...props }: any) => {
+const CalendarYearNext: FC<CalendarButtonProps> = ({
+  onClick,
+  ...props
+}) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarMonthPrev = ({ onClick, ...props }: any) => {
+const CalendarMonthPrev: FC<CalendarButtonProps> = ({
+  onClick,
+  ...props
+}) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarMonthNext = ({ onClick, ...props }: any) => {
+const CalendarMonthNext: FC<CalendarButtonProps> = ({
+  onClick,
+  ...props
+}) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarMonthYear = ({ ...props }) => {
+const CalendarMonthYear: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   return <div {...props} />;
 };
 
-const CalendarGrid = ({ className, ...props }: any) => {
-  console.log("hello world");
-
+const CalendarGrid: FC<HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}) => {
   return (
     <table
       className={twMerge("border-collapse border w-full", className)}
@@ -42,11 +67,13 @@ const CalendarGrid = ({ className, ...props }: any) => {
   );
 };
 
-const CalendarHeader = ({ day }: any) => {
+const CalendarHeader: FC<CalendarHeaderProps> = ({ day, ...props }) => {
   return <th className={twMerge("text-center border")}>{day}</th>;
 };
 
-const CalendarHeaders = ({ children }: any) => {
+const CalendarHeaders: FC<HTMLAttributes<HTMLDivElement>> = ({
+  children,
+}) => {
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -68,7 +95,7 @@ const CalendarHeaders = ({ children }: any) => {
   );
 };
 
-const CalendarEvent = ({ title, start, end }: any) => {
+const CalendarEvent: FC<CalendarEventProps> = ({ title, start, end }) => {
   return (
     <div className="px-4 flex items-center gap-1">
       <div className="w-2 h-2 mr-2 bg-red-500 rounded-full" />
@@ -77,7 +104,12 @@ const CalendarEvent = ({ title, start, end }: any) => {
   );
 };
 
-const CalendarDay = ({ day, current, today, events }: any) => {
+const CalendarDay: FC<CalendarDayProps> = ({
+  day,
+  current,
+  today,
+  events,
+}) => {
   return (
     <td
       className={`${current ? "text-black" : "text-gray-400"} ${
@@ -94,7 +126,7 @@ const CalendarDay = ({ day, current, today, events }: any) => {
   );
 };
 
-const CalendarWeek = ({ week, className }: any) => {
+const CalendarWeek: FC<CalendarWeekProps> = ({ week, className }) => {
   return (
     <tr
       className={twMerge("grid grid-cols-7 border-collapse h-full", className)}
@@ -106,7 +138,12 @@ const CalendarWeek = ({ week, className }: any) => {
   );
 };
 
-const CalendarDays = ({ month, year, events, className }: any) => {
+const CalendarDays: FC<CalendarDaysProps> = ({
+  month,
+  year,
+  events,
+  className,
+}) => {
   const first = new Date(year, month, 1).getDay();
   const last = new Date(year, month + 1, 0).getDate();
 
@@ -144,12 +181,10 @@ const CalendarDays = ({ month, year, events, className }: any) => {
       current: false,
       today: false,
       events: [],
-    })
+    }),
   );
 
   const days: any = prefix.concat(curr, suffix);
-
-  console.log("RUH OH THE DAYS NOT WORKING LOL?", days);
 
   return (
     <tbody className={twMerge("flex flex-col h-full", className)}>
@@ -163,7 +198,10 @@ const CalendarDays = ({ month, year, events, className }: any) => {
   );
 };
 
-const Calendar = ({ className, ...props }: any) => {
+const Calendar: FC<HTMLAttributes<HTMLDivElement>> = ({
+  className,
+  ...props
+}: any) => {
   return <div className={twMerge("h-full", className)} {...props} />;
 };
 
