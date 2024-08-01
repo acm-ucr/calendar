@@ -1,4 +1,3 @@
-import { HTMLAttributes } from "react";
 
 export type event = {
   title: string;
@@ -32,7 +31,7 @@ export type CalendarWeekProps = React.HTMLAttributes<HTMLTableRowElement> & {
    week: CalendarDayProps[];
 }
 
-export type CalendarDaysProps = HTMLAttributes<HTMLTableSectionElement> & {
+export type CalendarDaysProps = React.HTMLAttributes<HTMLTableSectionElement> & {
   month : number;
   year: number;
   events: CalendarEventProps[];
