@@ -7,7 +7,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 const packageJson = require("./package.json");
 
-export default [
+export default temp = [
   {
     input: "index.ts",
     output: [
