@@ -12,7 +12,8 @@
   "plugins": ["react"],
   "rules": {
     "require-jsdoc": 0,
-    "jsx-a11y/alt-text": 1
+    "jsx-a11y/alt-text": 1,
+    "no-html-link-for-pages": 0
   },
   "settings": {
     "react": {
