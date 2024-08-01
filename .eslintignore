@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# rollup
+/dist
+
 # production
 /build
 
