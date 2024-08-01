@@ -12,7 +12,7 @@
     "build-storybook": "storybook build",
     "format": "npx prettier --write .",
     "check": "npx prettier --check .",
-    "eslint": "npx eslint . --ext js --ext jsx",
+    "eslint": "npx eslint . --ext js --ext ts --ext jsx --ext tsx",
     "prepare": "husky"
   },
   "repository": {
@@ -36,6 +36,10 @@
     "@storybook/react-vite": "^8.2.6",
     "@storybook/test": "^8.2.6",
     "@types/react": "^18.3.3",
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-next": "^13.5.6",
+    "eslint-config-prettier": "^9.0.0",
     "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
@@ -47,11 +51,7 @@
     "storybook": "^8.2.6",
     "tailwindcss": "^3.4.7",
     "tslib": "^2.6.3",
-    "typescript": "^5.5.3",
-    "eslint": "^8.53.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-next": "^13.5.6",
-    "eslint-config-prettier": "^9.0.0"
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "lucide-react": "^0.416.0",

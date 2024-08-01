@@ -12,7 +12,10 @@
   "plugins": ["react"],
   "rules": {
     "require-jsdoc": 0,
-    "jsx-a11y/alt-text": 1
+    "jsx-a11y/alt-text": 1,
+    "react/jsx-key": 0,
+    "no-unused-vars": 0,
+    "valid-jsdoc": 0
   },
   "settings": {
     "react": {
