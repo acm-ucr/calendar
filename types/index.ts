@@ -13,32 +13,32 @@ export type cards = {
   events: event[];
 };
 
-export interface CalendarButtonProps extends React.HTMLAttributes<HTMLDivElement> {
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
-}
+export type CalendarButtonProps = React.HTMLAttributes<HTMLDivElement> & {
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
+};
 
-export interface CalendarHeaderProps extends React.ThHTMLAttributes<HTMLTableHeaderCellElement> {
+export type CalendarHeaderProps = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
   day: string;
 }
 
-export interface CalendarEventProps extends React.HTMLAttributes<HTMLDivElement> {
+export type CalendarEventProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
   start: Date;
   end: Date;
 }
 
 
-export interface CalendarWeekProps extends React.HTMLAttributes<HTMLTableRowElement>{
-  week: CalendarDayProps[];
+export type CalendarWeekProps = React.HTMLAttributes<HTMLTableRowElement> & {
+   week: CalendarDayProps[];
 }
 
-export interface CalendarDaysProps extends HTMLAttributes<HTMLTableSectionElement> {
-  month: number;
+export type CalendarDaysProps = HTMLAttributes<HTMLTableSectionElement> & {
+  month : number;
   year: number;
   events: CalendarEventProps[];
 }
 
-export interface CalendarDayProps {
+export type CalendarDayProps = {
   day: number;
   current: boolean;
   today: boolean;
