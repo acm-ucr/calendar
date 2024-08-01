@@ -1,12 +1,12 @@
-export type event = {
+export type Event = {
   title: string;
   start: Date;
   end: Date;
 };
 
-export type cards = {
+export type Cards = {
   day: number;
   current: boolean;
   today: boolean;
-  events: event[];
+  events: Event[];
 };

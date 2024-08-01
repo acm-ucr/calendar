@@ -1,6 +1,7 @@
 "use client";
 import "../index.css";
 import { twMerge } from "tailwind-merge";
+import { useCalendar } from './hooks/useCalendar';
 
 const CalendarToolbar = ({ className, ...props }: any) => {
   return (
@@ -107,49 +108,7 @@ const CalendarWeek = ({ week, className }: any) => {
 };
 
 const CalendarDays = ({ month, year, events, className }: any) => {
-  const first = new Date(year, month, 1).getDay();
-  const last = new Date(year, month + 1, 0).getDate();
-
-  const lastPrevious = new Date(year, month, 0).getDate();
-
-  const today = new Date();
-  const currMonth = today.getMonth() === month;
-  const currYear = today.getFullYear() === year;
-
-  const curr = Array.from({ length: last }, (_, i) => ({
-    day: i + 1,
-    current: true,
-    today: currMonth && currYear && today.getDate() === i + 1,
-    events: events.filter((event: any) => {
-      return (
-        event.start >= new Date(year, month, i + 1) &&
-        event.end <= new Date(year, month, i + 2)
-      );
-    }),
-  }));
-
-  const prefix: any = Array.from({ length: first }, (_, i) => ({
-    day: lastPrevious - first + i + 1,
-    current: false,
-    today: false,
-    events: [],
-  }));
-
-  const FL = first + last;
-
-  const suffix: any = Array.from(
-    { length: FL - (FL % 7) + 7 - FL },
-    (_, i) => ({
-      day: i + 1,
-      current: false,
-      today: false,
-      events: [],
-    })
-  );
-
-  const days: any = prefix.concat(curr, suffix);
-
-  console.log("RUH OH THE DAYS NOT WORKING LOL?", days);
+  const { days } = useCalendar(month, year, events);
 
   return (
     <tbody className={twMerge("flex flex-col h-full", className)}>
