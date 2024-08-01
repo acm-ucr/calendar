@@ -45,20 +45,20 @@ const Days = ({ year, month, events }: props) => {
       current: false,
       today: false,
       events: [],
-    })
+    }),
   );
 
   const cards: cards[] = prefix.concat(days, suffix);
 
   return (
-    <tbody className="flex flex-col h-full">
+    <tbody className="flex h-full flex-col">
       {cards.map(({ day }, index) => {
         if (index % 7) return null;
 
         const week = cards.slice(index, index + 7);
 
         return (
-          <tr key={day} className="grid grid-cols-7 border-collapse h-full">
+          <tr key={day} className="grid h-full border-collapse grid-cols-7">
             {week.map(({ day, current, today, events }) => (
               <Day
                 key={day}

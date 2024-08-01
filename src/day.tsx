@@ -16,7 +16,7 @@ const Day = ({ day, current, today, events }: props) => {
       } border`}
     >
       <div className="flex w-full justify-center">{day}</div>
-      <div className=" h-20 overflow-scroll">
+      <div className="h-20 overflow-scroll">
         {events.map(({ title, start, end }, index) => (
           <Event key={index} title={title} start={start} end={end} />
         ))}

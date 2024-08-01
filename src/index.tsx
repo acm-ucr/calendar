@@ -60,7 +60,7 @@ const Calendar = () => {
         onMonthChange={onMonthChange}
         onYearChange={onYearChange}
       />
-      <table className="border-collapse border w-full">
+      <table className="w-full border-collapse border">
         <Headers />
         <Days year={year} month={month} events={events} />
       </table>

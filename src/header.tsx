@@ -3,7 +3,7 @@ type props = {
 };
 
 const Header = ({ day }: props) => {
-  return <th className="text-center border">{day}</th>;
+  return <th className="border text-center">{day}</th>;
 };
 
 export default Header;

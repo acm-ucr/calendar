@@ -13,7 +13,7 @@ type props = {
 
 const Toolbar = ({ date, onMonthChange, onYearChange }: props) => {
   return (
-    <div className="flex gap-4 justify-center">
+    <div className="flex justify-center gap-4">
       <ChevronsLeft className="text-3xl" onClick={() => onYearChange(-1)} />
       <ChevronLeft className="text-3xl" onClick={() => onMonthChange(-1)} />
       {date.toLocaleString("default", { month: "long" })}
