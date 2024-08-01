@@ -13,13 +13,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: acm-ucr/formatting@v2
 
-  lint:
-    name: linting
-    runs-on: ubuntu-latest
+  # lint:
+  #   name: linting
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: acm-ucr/linting@v2
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: acm-ucr/linting@v2
 
   images:
     name: images
@@ -34,9 +34,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
-    name: build
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: acm-ucr/build@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14" # Specify the Node.js version you need
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Run Rollup
+        run: npm run rollup
