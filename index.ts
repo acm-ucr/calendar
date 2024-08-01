@@ -1,3 +1,25 @@
-import Calendar from "./src";
+import {
+  Calendar,
+  CalendarDays,
+  CalendarGrid,
+  CalendarHeaders,
+  CalendarMonthNext,
+  CalendarMonthPrev,
+  CalendarMonthYear,
+  CalendarToolbar,
+  CalendarYearNext,
+  CalendarYearPrev,
+} from "./src/calendar";
 
-export default Calendar;
+export {
+  Calendar,
+  CalendarDays,
+  CalendarGrid,
+  CalendarHeaders,
+  CalendarMonthNext,
+  CalendarMonthPrev,
+  CalendarMonthYear,
+  CalendarToolbar,
+  CalendarYearNext,
+  CalendarYearPrev,
+};
