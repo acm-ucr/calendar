@@ -46,7 +46,7 @@ const CalendarHeader = ({ day }: any) => {
   return <th className={twMerge("border text-center")}>{day}</th>;
 };
 
-const CalendarHeaders = ({ children }: any) => {
+const CalendarHeaders = () => {
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -60,15 +60,15 @@ const CalendarHeaders = ({ children }: any) => {
   return (
     <thead>
       <tr className="grid grid-cols-7">
-        {daysOfWeek.map((day) => (
-          <CalendarHeader day={day} />
+        {daysOfWeek.map((day, index) => (
+          <CalendarHeader day={day} key={index} />
         ))}
       </tr>
     </thead>
   );
 };
 
-const CalendarEvent = ({ title, start, end }: any) => {
+const CalendarEvent = ({ title }: any) => {
   return (
     <div className="flex items-center gap-1 px-4">
       <div className="mr-2 h-2 w-2 rounded-full bg-red-500" />
@@ -99,8 +99,8 @@ const CalendarWeek = ({ week, className }: any) => {
     <tr
       className={twMerge("grid h-full border-collapse grid-cols-7", className)}
     >
-      {week.map((props: any) => (
-        <CalendarDay {...props} />
+      {week.map((props: any, index: number) => (
+        <CalendarDay key={index} {...props} />
       ))}
     </tr>
   );
@@ -157,7 +157,7 @@ const CalendarDays = ({ month, year, events, className }: any) => {
         if (index % 7) return null;
         const week = days.slice(index, index + 7);
 
-        return <CalendarWeek week={week} />;
+        return <CalendarWeek key={index} week={week} />;
       })}
     </tbody>
   );

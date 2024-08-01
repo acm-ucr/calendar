@@ -12,7 +12,7 @@
     "build-storybook": "storybook build",
     "format": "npx prettier --write .",
     "check": "npx prettier --check .",
-    "eslint": "npx eslint . --ext js --ext ts --ext jsx --ext tsx",
+    "eslint": "npx eslint -c eslint.config.mjs .",
     "prepare": "husky"
   },
   "repository": {
@@ -23,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
+    "@eslint/js": "^9.8.0",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
@@ -36,10 +37,11 @@
     "@storybook/react-vite": "^8.2.6",
     "@storybook/test": "^8.2.6",
     "@types/react": "^18.3.3",
-    "eslint": "^8.57.0",
+    "eslint": "^9.8.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-next": "^13.5.6",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.8.0",
     "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
@@ -51,7 +53,8 @@
     "storybook": "^8.2.6",
     "tailwindcss": "^3.4.7",
     "tslib": "^2.6.3",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
     "lucide-react": "^0.416.0",
