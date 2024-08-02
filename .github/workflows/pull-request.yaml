@@ -18,8 +18,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: acm-ucr/linting@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run lint
+        run: npm run eslint
 
   images:
     name: images
