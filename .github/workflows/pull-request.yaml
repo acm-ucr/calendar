@@ -18,10 +18,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Run lint
-        run: npm run eslint
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.14.2"
+      - run: npm ci
+      - run: npm run eslint
 
   images:
     name: images
