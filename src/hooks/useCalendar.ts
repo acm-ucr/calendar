@@ -1,11 +1,20 @@
-import { useMemo } from 'react';
-import { Event, Cards} from '../../types/index';
+import { useMemo } from "react";
+import { Event, Cards } from "../../types/index";
 
-
-export const useCalendar = (month: number, year: number, events: Event[]): { days: Cards[] } => {
+export const useCalendar = (
+  month: number,
+  year: number,
+  events: Event[],
+): { days: Cards[] } => {
   const first = useMemo(() => new Date(year, month, 1).getDay(), [month, year]);
-  const last = useMemo(() => new Date(year, month + 1, 0).getDate(), [month, year]);
-  const lastPrevious = useMemo(() => new Date(year, month, 0).getDate(), [month, year]);
+  const last = useMemo(
+    () => new Date(year, month + 1, 0).getDate(),
+    [month, year],
+  );
+  const lastPrevious = useMemo(
+    () => new Date(year, month, 0).getDate(),
+    [month, year],
+  );
 
   const today = new Date();
   const currMonth = today.getMonth() === month;
@@ -26,7 +35,7 @@ export const useCalendar = (month: number, year: number, events: Event[]): { day
           );
         }),
       })),
-    [last, month, year, events, currMonth, currYear, today]
+    [last, month, year, events, currMonth, currYear, today],
   );
 
   const prefix = useMemo<Cards[]>(
@@ -37,7 +46,7 @@ export const useCalendar = (month: number, year: number, events: Event[]): { day
         today: false,
         events: [],
       })),
-    [first, lastPrevious]
+    [first, lastPrevious],
   );
 
   const FL = first + last;
@@ -50,12 +59,13 @@ export const useCalendar = (month: number, year: number, events: Event[]): { day
         today: false,
         events: [],
       })),
-    [FL]
+    [FL],
   );
 
-  const days = useMemo<Cards[]>(() => prefix.concat(curr, suffix), [prefix, curr, suffix]);
+  const days = useMemo<Cards[]>(
+    () => prefix.concat(curr, suffix),
+    [prefix, curr, suffix],
+  );
 
   return { days };
 };
-
-
