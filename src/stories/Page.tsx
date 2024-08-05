@@ -16,14 +16,12 @@ import {
   CalendarYearNext,
   CalendarYearPrev,
 } from "../calendar";
-import { useState } from "react";
 
 export const Page = () => {
-  const [date, setDate] = useState(new Date());
+  const date = new Date();
 
   const year = date.getFullYear();
   const month = date.getMonth();
-  const day = date.getDate();
 
   const events = [
     {
