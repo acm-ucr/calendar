@@ -23,31 +23,19 @@ const CalendarToolbar: FC<HTMLAttributes<HTMLDivElement>> = ({
   );
 };
 
-const CalendarYearPrev: FC<CalendarButtonProps> = ({
-  onClick,
-  ...props
-}) => {
+const CalendarYearPrev: FC<CalendarButtonProps> = ({ onClick, ...props }) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarYearNext: FC<CalendarButtonProps> = ({
-  onClick,
-  ...props
-}) => {
+const CalendarYearNext: FC<CalendarButtonProps> = ({ onClick, ...props }) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarMonthPrev: FC<CalendarButtonProps> = ({
-  onClick,
-  ...props
-}) => {
+const CalendarMonthPrev: FC<CalendarButtonProps> = ({ onClick, ...props }) => {
   return <div onClick={onClick} {...props} />;
 };
 
-const CalendarMonthNext: FC<CalendarButtonProps> = ({
-  onClick,
-  ...props
-}) => {
+const CalendarMonthNext: FC<CalendarButtonProps> = ({ onClick, ...props }) => {
   return <div onClick={onClick} {...props} />;
 };
 
@@ -61,19 +49,17 @@ const CalendarGrid: FC<HTMLAttributes<HTMLDivElement>> = ({
 }) => {
   return (
     <table
-      className={twMerge("border-collapse border w-full", className)}
+      className={twMerge("w-full border-collapse border", className)}
       {...props}
     />
   );
 };
 
-const CalendarHeader: FC<CalendarHeaderProps> = ({ day, ...props }) => {
-  return <th className={twMerge("text-center border")}>{day}</th>;
+const CalendarHeader: FC<CalendarHeaderProps> = ({ day }) => {
+  return <th className={twMerge("border text-center")}>{day}</th>;
 };
 
-const CalendarHeaders: FC<HTMLAttributes<HTMLDivElement>> = ({
-  children,
-}) => {
+const CalendarHeaders: FC<HTMLAttributes<HTMLDivElement>> = () => {
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -87,29 +73,24 @@ const CalendarHeaders: FC<HTMLAttributes<HTMLDivElement>> = ({
   return (
     <thead>
       <tr className="grid grid-cols-7">
-        {daysOfWeek.map((day) => (
-          <CalendarHeader day={day} />
+        {daysOfWeek.map((day, index) => (
+          <CalendarHeader day={day} key={index} />
         ))}
       </tr>
     </thead>
   );
 };
 
-const CalendarEvent: FC<CalendarEventProps> = ({ title, start, end }) => {
+const CalendarEvent: FC<CalendarEventProps> = ({ title }) => {
   return (
-    <div className="px-4 flex items-center gap-1">
-      <div className="w-2 h-2 mr-2 bg-red-500 rounded-full" />
+    <div className="flex items-center gap-1 px-4">
+      <div className="mr-2 h-2 w-2 rounded-full bg-red-500" />
       <p>{title}</p>
     </div>
   );
 };
 
-const CalendarDay: FC<CalendarDayProps> = ({
-  day,
-  current,
-  today,
-  events,
-}) => {
+const CalendarDay: FC<CalendarDayProps> = ({ day, current, today, events }) => {
   return (
     <td
       className={`${current ? "text-black" : "text-gray-400"} ${
@@ -117,9 +98,9 @@ const CalendarDay: FC<CalendarDayProps> = ({
       } border`}
     >
       <div className="flex w-full justify-center">{day}</div>
-      <div className=" h-20 overflow-scroll">
-        {events.map(({ title, start, end }: any, index: any) => (
-          <CalendarEvent key={index} title={title} start={start} end={end} />
+      <div className="h-20 overflow-scroll">
+        {events.map(({ title }: any, index: number) => (
+          <CalendarEvent key={index} title={title} />
         ))}
       </div>
     </td>
@@ -129,10 +110,10 @@ const CalendarDay: FC<CalendarDayProps> = ({
 const CalendarWeek: FC<CalendarWeekProps> = ({ week, className }) => {
   return (
     <tr
-      className={twMerge("grid grid-cols-7 border-collapse h-full", className)}
+      className={twMerge("grid h-full border-collapse grid-cols-7", className)}
     >
-      {week.map((props: any) => (
-        <CalendarDay {...props} />
+      {week.map((props: any, index: number) => (
+        <CalendarDay key={index} {...props} />
       ))}
     </tr>
   );
@@ -187,12 +168,12 @@ const CalendarDays: FC<CalendarDaysProps> = ({
   const days: any = prefix.concat(curr, suffix);
 
   return (
-    <tbody className={twMerge("flex flex-col h-full", className)}>
+    <tbody className={twMerge("flex h-full flex-col", className)}>
       {days.map((_: any, index: number) => {
         if (index % 7) return null;
         const week = days.slice(index, index + 7);
 
-        return <CalendarWeek week={week} />;
+        return <CalendarWeek key={index} week={week} />;
       })}
     </tbody>
   );

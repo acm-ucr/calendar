@@ -1,4 +1,3 @@
-
 export type event = {
   title: string;
   start: Date;
@@ -13,33 +12,32 @@ export type cards = {
 };
 
 export type CalendarButtonProps = React.HTMLAttributes<HTMLDivElement> & {
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
-export type CalendarHeaderProps = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
-  day: string;
-}
+export type CalendarHeaderProps =
+  React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
+    day: string;
+  };
 
 export type CalendarEventProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
-  start: Date;
-  end: Date;
-}
-
+};
 
 export type CalendarWeekProps = React.HTMLAttributes<HTMLTableRowElement> & {
-   week: CalendarDayProps[];
-}
+  week: CalendarDayProps[];
+};
 
-export type CalendarDaysProps = React.HTMLAttributes<HTMLTableSectionElement> & {
-  month : number;
-  year: number;
-  events: CalendarEventProps[];
-}
+export type CalendarDaysProps =
+  React.HTMLAttributes<HTMLTableSectionElement> & {
+    month: number;
+    year: number;
+    events: CalendarEventProps[];
+  };
 
 export type CalendarDayProps = {
   day: number;
   current: boolean;
   today: boolean;
   events: CalendarEventProps[];
-}
+};
