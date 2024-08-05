@@ -33,8 +33,6 @@ const CalendarMonthYear = ({ ...props }) => {
 };
 
 const CalendarGrid = ({ className, ...props }: any) => {
-  console.log("hello world");
-
   return (
     <table
       className={twMerge("w-full border-collapse border", className)}
