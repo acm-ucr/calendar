@@ -99,7 +99,7 @@ const CalendarDay: FC<CalendarDayProps> = ({ day, current, today, events }) => {
     >
       <div className="flex w-full justify-center">{day}</div>
       <div className="h-20 overflow-scroll">
-        {events.map(({ title }: any, index: number) => (
+        {events.map(({ title }: CalendarEventProps, index: number) => (
           <CalendarEvent key={index} title={title} />
         ))}
       </div>
@@ -112,7 +112,7 @@ const CalendarWeek: FC<CalendarWeekProps> = ({ week, className }) => {
     <tr
       className={twMerge("grid h-full border-collapse grid-cols-7", className)}
     >
-      {week.map((props: any, index: number) => (
+      {week.map((props: CalendarDayProps, index: number) => (
         <CalendarDay key={index} {...props} />
       ))}
     </tr>
@@ -138,15 +138,15 @@ const CalendarDays: FC<CalendarDaysProps> = ({
     day: i + 1,
     current: true,
     today: currMonth && currYear && today.getDate() === i + 1,
-    events: events.filter((event: any) => {
+    events: events.filter((event: CalendarEventProps) => {
       return (
-        event.start >= new Date(year, month, i + 1) &&
-        event.end <= new Date(year, month, i + 2)
+        event.start! >= new Date(year, month, i + 1) &&
+        event.end! <= new Date(year, month, i + 2)
       );
     }),
-  }));
+  })) as CalendarDayProps[];
 
-  const prefix: any = Array.from({ length: first }, (_, i) => ({
+  const prefix: CalendarDayProps[] = Array.from({ length: first }, (_, i) => ({
     day: lastPrevious - first + i + 1,
     current: false,
     today: false,
@@ -155,7 +155,7 @@ const CalendarDays: FC<CalendarDaysProps> = ({
 
   const FL = first + last;
 
-  const suffix: any = Array.from(
+  const suffix: CalendarDayProps[] = Array.from(
     { length: FL - (FL % 7) + 7 - FL },
     (_, i) => ({
       day: i + 1,
@@ -165,11 +165,11 @@ const CalendarDays: FC<CalendarDaysProps> = ({
     }),
   );
 
-  const days: any = prefix.concat(curr, suffix);
+  const days: CalendarDayProps[] = prefix.concat(curr, suffix);
 
   return (
     <tbody className={twMerge("flex h-full flex-col", className)}>
-      {days.map((_: any, index: number) => {
+      {days.map((_: CalendarDayProps, index: number) => {
         if (index % 7) return null;
         const week = days.slice(index, index + 7);
 
@@ -182,7 +182,7 @@ const CalendarDays: FC<CalendarDaysProps> = ({
 const Calendar: FC<HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props
-}: any) => {
+}) => {
   return <div className={twMerge("h-full", className)} {...props} />;
 };
 
