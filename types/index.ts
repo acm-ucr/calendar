@@ -5,14 +5,14 @@ export type event = {
 };
 
 export type cards = {
-  day: number;
-  current: boolean;
-  today: boolean;
+  day?: number;
+  current?: boolean;
+  today?: boolean;
   events?: event[];
 };
 
 export type CalendarButtonProps = React.HTMLAttributes<HTMLDivElement> & {
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export type CalendarHeaderProps =
@@ -28,8 +28,8 @@ export type CalendarWeekProps = React.HTMLAttributes<HTMLTableRowElement> & {
 
 export type CalendarDaysProps =
   React.HTMLAttributes<HTMLTableSectionElement> & {
-    month: number;
-    year: number;
+    month?: number;
+    year?: number;
     events: CalendarEventProps[];
   };
 
