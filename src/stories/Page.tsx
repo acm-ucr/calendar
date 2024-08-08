@@ -17,13 +17,10 @@ import {
   CalendarYearPrev,
 } from "../calendar";
 
+import { CalendarEventProps } from "../../types/index";
+
 export const Page = () => {
-  const date = new Date();
-
-  const year = date.getFullYear();
-  const month = date.getMonth();
-
-  const events = [
+  const events: CalendarEventProps[] = [
     {
       start: new Date(2024, 5, 1, 12, 30),
       end: new Date(2024, 5, 1, 1, 30),
@@ -65,7 +62,7 @@ export const Page = () => {
         <CalendarMonthPrev>
           <ChevronLeft />
         </CalendarMonthPrev>
-        <CalendarMonthYear>{date.toDateString()}</CalendarMonthYear>
+        <CalendarMonthYear>{new Date().toDateString()}</CalendarMonthYear>
         <CalendarMonthNext>
           <ChevronRight />
         </CalendarMonthNext>
@@ -76,7 +73,7 @@ export const Page = () => {
 
       <CalendarGrid>
         <CalendarHeaders />
-        <CalendarDays month={month} year={year} events={events} />
+        <CalendarDays events={events} />
       </CalendarGrid>
     </Calendar>
   );
