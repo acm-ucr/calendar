@@ -10,6 +10,7 @@ import {
   CalendarYearNext,
   CalendarYearPrev,
 } from "./src/calendar";
+import { useCalendar } from "./src/hooks/useCalendar";
 
 export {
   Calendar,
@@ -22,4 +23,5 @@ export {
   CalendarToolbar,
   CalendarYearNext,
   CalendarYearPrev,
+  useCalendar,
 };

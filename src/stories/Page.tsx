@@ -17,12 +17,9 @@ import {
   CalendarYearPrev,
 } from "../calendar";
 
+import { useCalendar } from "../hooks/useCalendar";
+
 export const Page = () => {
-  const date = new Date();
-
-  const year = date.getFullYear();
-  const month = date.getMonth();
-
   const events = [
     {
       start: new Date(2024, 5, 1, 12, 30),
@@ -56,6 +53,8 @@ export const Page = () => {
     },
   ];
 
+  const { days, today } = useCalendar(events);
+
   return (
     <Calendar>
       <CalendarToolbar>
@@ -65,7 +64,7 @@ export const Page = () => {
         <CalendarMonthPrev>
           <ChevronLeft />
         </CalendarMonthPrev>
-        <CalendarMonthYear>{date.toDateString()}</CalendarMonthYear>
+        <CalendarMonthYear date={today} />
         <CalendarMonthNext>
           <ChevronRight />
         </CalendarMonthNext>
@@ -76,7 +75,7 @@ export const Page = () => {
 
       <CalendarGrid>
         <CalendarHeaders />
-        <CalendarDays month={month} year={year} events={events} />
+        <CalendarDays days={days} />
       </CalendarGrid>
     </Calendar>
   );

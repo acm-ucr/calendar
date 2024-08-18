@@ -11,8 +11,12 @@ export type cards = {
   events?: event[];
 };
 
+export type CalendarMonthYearProps = React.HTMLAttributes<HTMLDivElement> & {
+  date: Date;
+};
+
 export type CalendarButtonProps = React.HTMLAttributes<HTMLDivElement> & {
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export type CalendarHeaderProps =
@@ -28,9 +32,7 @@ export type CalendarWeekProps = React.HTMLAttributes<HTMLTableRowElement> & {
 
 export type CalendarDaysProps =
   React.HTMLAttributes<HTMLTableSectionElement> & {
-    month: number;
-    year: number;
-    events: CalendarEventProps[];
+    days: CalendarDayProps[];
   };
 
 export type CalendarDayProps = React.HTMLAttributes<HTMLTableDataCellElement> &
