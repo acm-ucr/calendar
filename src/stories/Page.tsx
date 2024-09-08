@@ -53,22 +53,23 @@ export const Page = () => {
     },
   ];
 
-  const { days, today } = useCalendar(events);
+  const { date, days, onPrevMonth, onPrevYear, onNextMonth, onNextYear } =
+    useCalendar(events);
 
   return (
     <Calendar>
       <CalendarToolbar>
-        <CalendarYearPrev>
+        <CalendarYearPrev onClick={onPrevYear}>
           <ChevronsLeft />
         </CalendarYearPrev>
-        <CalendarMonthPrev>
+        <CalendarMonthPrev onClick={onPrevMonth}>
           <ChevronLeft />
         </CalendarMonthPrev>
-        <CalendarMonthYear date={today} />
-        <CalendarMonthNext>
+        <CalendarMonthYear date={date} />
+        <CalendarMonthNext onClick={onNextMonth}>
           <ChevronRight />
         </CalendarMonthNext>
-        <CalendarYearNext>
+        <CalendarYearNext onClick={onNextYear}>
           <ChevronsRight />
         </CalendarYearNext>
       </CalendarToolbar>

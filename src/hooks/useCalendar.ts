@@ -1,8 +1,9 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { CalendarEventProps, CalendarDayProps } from "../../types/index";
 
 export const useCalendar = (events: CalendarEventProps[]) => {
-  const today = new Date();
+  const [today, setToday] = useState(new Date());
+
   const year = today.getFullYear();
   const month = today.getMonth();
 
@@ -11,8 +12,8 @@ export const useCalendar = (events: CalendarEventProps[]) => {
     const last = new Date(year, month + 1, 0).getDate();
     const lastPrevious = new Date(year, month, 0).getDate();
 
-    const currMonth = today.getMonth() === month;
-    const currYear = today.getFullYear() === year;
+    const currMonth = today.getMonth() === new Date().getMonth();
+    const currYear = today.getFullYear() === new Date().getFullYear();
 
     const curr = Array.from({ length: last }, (_, i) => ({
       day: i + 1,
@@ -51,5 +52,30 @@ export const useCalendar = (events: CalendarEventProps[]) => {
     return prefix.concat(curr, suffix);
   }, [month, year, events]);
 
-  return { days, month, year, today };
+  const onPrevMonth = () => {
+    setToday(new Date(year, month - 1, today.getDate()));
+  };
+
+  const onPrevYear = () => {
+    setToday(new Date(year - 1, month, today.getDate()));
+  };
+
+  const onNextMonth = () => {
+    setToday(new Date(year, month + 1, today.getDate()));
+  };
+
+  const onNextYear = () => {
+    setToday(new Date(year - +1, month, today.getDate()));
+  };
+
+  return {
+    days,
+    month,
+    year,
+    date: today,
+    onPrevMonth,
+    onPrevYear,
+    onNextMonth,
+    onNextYear,
+  };
 };
